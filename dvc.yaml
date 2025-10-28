@@ -17,3 +17,12 @@ stages:
       - params.yaml
     outs:
       - models/rf_model.pkl
+
+  evaluate_rf:
+    cmd: python src/evaluate_rf.py
+    deps:
+      - src/evaluate_rf.py
+      - data/processed/fraud_data_processed.csv
+      - models/rf_model.pkl
+    metrics:
+      - metrics/rf_metrics.json

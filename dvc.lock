@@ -44,3 +44,23 @@ stages:
       hash: md5
       md5: 3b4211af2417534a899f3d2fc2e2d90c
       size: 1471706
+  evaluate_rf:
+    cmd: python src/evaluate_rf.py
+    deps:
+    - path: data/processed/fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703
+    - path: models/rf_model.pkl
+      hash: md5
+      md5: 3b4211af2417534a899f3d2fc2e2d90c
+      size: 1471706
+    - path: src/evaluate_rf.py
+      hash: md5
+      md5: 6af78fd09c4ceb6222a213fa0bdeae45
+      size: 3463
+    outs:
+    - path: metrics/rf_metrics.json
+      hash: md5
+      md5: d8ee78a42d07bb78f31e041cb8ee3c6d
+      size: 474
