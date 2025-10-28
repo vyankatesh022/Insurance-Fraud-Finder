@@ -36,3 +36,12 @@ stages:
       - params.yaml
     outs:
       - models/dl_model.pkl
+
+  evaluate_dl:
+    cmd: python src/evaluate_dl.py
+    deps:
+      - data/processed/fraud_data_processed.csv
+      - src/evaluate_dl.py
+      - models/dl_model.pkl 
+    metrics:
+      - metrics/dl_evaluation_report.json

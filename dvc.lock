@@ -88,3 +88,23 @@ stages:
       hash: md5
       md5: 5e2e40a871ed75d5963f006b8ea95265
       size: 172119
+  evaluate_dl:
+    cmd: python src/evaluate_dl.py
+    deps:
+    - path: data/processed/fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703
+    - path: models/dl_model.pkl
+      hash: md5
+      md5: 5e2e40a871ed75d5963f006b8ea95265
+      size: 172119
+    - path: src/evaluate_dl.py
+      hash: md5
+      md5: aa8e9126bb6f78c5a89cf7cd91d6d2b7
+      size: 4263
+    outs:
+    - path: metrics/dl_evaluation_report.json
+      hash: md5
+      md5: 1f94fcebc6370ee6f3d1596a32f479fd
+      size: 167
