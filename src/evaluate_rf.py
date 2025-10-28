@@ -20,7 +20,7 @@ with open('params.yaml', 'r') as f:
     params = yaml.safe_load(f)
 
 # Configure logging
-logger = get_logger('train_rf', params)
+logger = get_logger('evaluate_rf', params)
 
 # MLflow_track
 setup_mlflow()

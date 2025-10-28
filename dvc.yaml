@@ -26,3 +26,13 @@ stages:
       - models/rf_model.pkl
     metrics:
       - metrics/rf_metrics.json
+
+  train_dl:
+    cmd: python src/train_dl.py
+    deps:
+      - src/train_dl.py
+      - src/mlflow_tracking.py
+      - data/processed/fraud_data_processed.csv
+      - params.yaml
+    outs:
+      - models/dl_model.pkl
