@@ -1,5 +1,18 @@
+#data
 data/raw
-temp.py
-mlruns
+
+#models
 models
+
+# local experiment
+logs/
+mlruns
 mlartifacts
+
+# Compiled Python cache
+__pycache__/
+*.pyc
+
+# Temporary or debug files
+temp.py
+*.tmp
