@@ -1,0 +1,70 @@
+data_preprocessing - INFO - Starting data preprocessing
+data_preprocessing - INFO - Loaded data from data/raw/Fraud_data.csv
+data_preprocessing - INFO - Dropped columns: ['Dummy Policy No', 'Bank code']
+data_preprocessing - INFO - Converted money columns to float
+data_preprocessing - INFO - Missing values imputed with: -1
+data_preprocessing - INFO - Label encoding applied to categorical columns
+data_preprocessing - INFO - Scaled features using StandardScaler
+data_preprocessing - INFO - Processed data saved to data/processed/fraud_data_processed.csv
+data_preprocessing - INFO - Processed data added to DVC
+train_rf - INFO - Loading processed data
+train_rf - INFO - Splitting data into train/test
+train_rf - INFO - Initializing Random Forest Classifier
+train_rf - INFO - Training RandomForest with GridSearchCV
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: 0.8497474747474748
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: 0.8560606060606061
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: 0.8611111111111112
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: 0.8547979797979798
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: 0.8623737373737373
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: 0.8560606060606061
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: 0.8573232323232324
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: 0.8598484848484849
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: 0.8560606060606061
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: 0.8510101010101011
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: 0.8547979797979798
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 5, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: 0.8611111111111112
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: 0.8724747474747475
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: 0.8712121212121211
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: 0.8674242424242425
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: 0.8686868686868686
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: 0.8686868686868686
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: 0.8674242424242425
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: 0.8699494949494949
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: 0.8686868686868686
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: 0.8661616161616162
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: 0.8724747474747475
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: 0.8686868686868686
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 10, 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: 0.8686868686868688
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 50}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 100}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 200}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 50}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 100}, Mean Test Score: nan
+train_rf - INFO - Logging hyperparameters: {'class_weight': 'balanced', 'max_depth': 'None', 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 200}, Mean Test Score: nan
+train_rf - INFO - Predicting on test set
+train_rf - INFO - Model Accuracy: 0.8724747474747475
+train_rf - INFO - Classification Report:
+              precision    recall  f1-score   support
+
+           1       0.00      0.00      0.00         3
+           2       0.81      0.84      0.82       116
+           3       0.00      0.00      0.00         4
+           4       0.00      0.00      0.00         1
+           5       0.00      0.00      0.00         1
+           6       0.78      0.58      0.67        12
+           7       0.00      0.00      0.00         2
+           8       0.91      0.97      0.94       370
+           9       0.00      0.00      0.00         6
+          10       1.00      0.21      0.35        14
+
+    accuracy                           0.88       529
+   macro avg       0.35      0.26      0.28       529
+weighted avg       0.86      0.88      0.86       529
+
+train_rf - INFO - Random Forest model saved to models/rf_model.pkl

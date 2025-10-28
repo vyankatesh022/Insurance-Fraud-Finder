@@ -1,2 +1,5 @@
 data/raw
 temp.py
+mlruns
+models
+mlartifacts

@@ -9,8 +9,8 @@ stages:
       size: 266962
     - path: params.yaml
       hash: md5
-      md5: 1eda0d4d8a52393cb9d475cb82851bd1
-      size: 417
+      md5: 2f9304e15b5a4e69993c3e692ccc0def
+      size: 654
     - path: src/data_preprocessing.py
       hash: md5
       md5: 39c6d19fd5bc9e837458a6a745847a90
@@ -20,3 +20,27 @@ stages:
       hash: md5
       md5: 168bc66e10108690c75d3ba8ea4a9992
       size: 575703
+  train_rf:
+    cmd: python src/train_rf.py
+    deps:
+    - path: data/processed/Fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703
+    - path: params.yaml
+      hash: md5
+      md5: 2f9304e15b5a4e69993c3e692ccc0def
+      size: 654
+    - path: src/mlflow_tracking.py
+      hash: md5
+      md5: d34359a3caa0fcda85d4d1a6021dd7e5
+      size: 1606
+    - path: src/train_rf.py
+      hash: md5
+      md5: bfd42922a8601f517f8bbd8d2a3432ba
+      size: 3555
+    outs:
+    - path: models/rf_model.pkl
+      hash: md5
+      md5: 3b4211af2417534a899f3d2fc2e2d90c
+      size: 1471706

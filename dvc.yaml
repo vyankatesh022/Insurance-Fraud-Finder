@@ -7,3 +7,13 @@ stages:
       - data/raw/Fraud_data.csv
     outs:
       - data/processed/fraud_data_processed.csv
+  
+  train_rf:
+    cmd: python src/train_rf.py
+    deps:
+      - src/train_rf.py
+      - src/mlflow_tracking.py
+      - data/processed/Fraud_data_processed.csv
+      - params.yaml
+    outs:
+      - models/rf_model.pkl
