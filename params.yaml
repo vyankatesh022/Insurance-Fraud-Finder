@@ -1,0 +1,14 @@
+# params.yaml
+data:
+  raw_path: 'data/raw/Fraud_data.csv'
+  processed_dir: data/processed
+  processed_file: 'data/processed/fraud_data_processed.csv'
+  drop_columns: ['Dummy Policy No','Bank code']
+  money_columns: ['POLICY SUMASSURED','Premium','Annual Income']
+  missing_value: -1
+  label_encoding: true
+  scaling_method: StandardScaler  # or MinMaxScaler
+
+logging:
+  level: INFO
+  file: 'logs/app.log'

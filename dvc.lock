@@ -1,0 +1,22 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/data_preprocessing.py
+    deps:
+    - path: data/raw/Fraud_data.csv
+      hash: md5
+      md5: bf689f17386a40dd4be900e76db7daef
+      size: 266962
+    - path: params.yaml
+      hash: md5
+      md5: 1eda0d4d8a52393cb9d475cb82851bd1
+      size: 417
+    - path: src/data_preprocessing.py
+      hash: md5
+      md5: 39c6d19fd5bc9e837458a6a745847a90
+      size: 2681
+    outs:
+    - path: data/processed/fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703

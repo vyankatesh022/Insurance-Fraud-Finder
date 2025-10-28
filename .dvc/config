@@ -1,0 +1,4 @@
+[core]
+    remote = insurance_temp
+['remote "insurance_temp"']
+    url = F:\Programs\Project\MLOPS\temp\Insurance_Temp
