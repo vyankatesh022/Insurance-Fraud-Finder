@@ -2,7 +2,7 @@ pandas
 numpy
 scikit-learn
 mlflow
-tensorflow
+keras
 pyyaml
 dvc
 dagshub
