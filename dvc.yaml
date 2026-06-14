@@ -45,3 +45,13 @@ stages:
       - models/dl_model.pkl 
     metrics:
       - metrics/dl_evaluation_report.json
+
+  train_pytorch:
+    cmd: python src/train_pytorch.py
+    deps:
+      - src/train_pytorch.py
+      - src/mlflow_tracking.py
+      - data/processed/fraud_data_processed.csv
+      - params.yaml
+    outs:
+      - models/pytorch_model.pkl

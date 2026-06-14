@@ -33,3 +33,13 @@ dl_model:
   optimizer: "adam"
   loss: "categorical_crossentropy"
   metrics: ["accuracy"]
+
+pytorch_model:
+  test_size: 0.4
+  random_state: 42
+  epochs: 50
+  batch_size: 32
+  learning_rate: 0.001
+  hidden_size1: 128
+  hidden_size2: 64
+  dropout: 0.3

@@ -9,8 +9,8 @@ stages:
       size: 266962
     - path: params.yaml
       hash: md5
-      md5: 60b141fb62aa223d35c18d1107416927
-      size: 844
+      md5: 12f53a82255ca3caf25c6da2af73104c
+      size: 1013
     - path: src/data_preprocessing.py
       hash: md5
       md5: 39c6d19fd5bc9e837458a6a745847a90
@@ -29,8 +29,8 @@ stages:
       size: 575703
     - path: params.yaml
       hash: md5
-      md5: 60b141fb62aa223d35c18d1107416927
-      size: 844
+      md5: 12f53a82255ca3caf25c6da2af73104c
+      size: 1013
     - path: src/mlflow_tracking.py
       hash: md5
       md5: a2e57166454f332f2bf7d00ac87b00f6
@@ -73,8 +73,8 @@ stages:
       size: 575703
     - path: params.yaml
       hash: md5
-      md5: 60b141fb62aa223d35c18d1107416927
-      size: 844
+      md5: 12f53a82255ca3caf25c6da2af73104c
+      size: 1013
     - path: src/mlflow_tracking.py
       hash: md5
       md5: a2e57166454f332f2bf7d00ac87b00f6
@@ -86,7 +86,7 @@ stages:
     outs:
     - path: models/dl_model.pkl
       hash: md5
-      md5: d7232128a9ff5c0fbf36705b6c6f24cc
+      md5: 2b4d129ea4bc4cf2ba72a83de1d496c5
       size: 172252
   evaluate_dl:
     cmd: python src/evaluate_dl.py
@@ -97,7 +97,7 @@ stages:
       size: 575703
     - path: models/dl_model.pkl
       hash: md5
-      md5: d7232128a9ff5c0fbf36705b6c6f24cc
+      md5: 2b4d129ea4bc4cf2ba72a83de1d496c5
       size: 172252
     - path: src/evaluate_dl.py
       hash: md5
@@ -106,5 +106,29 @@ stages:
     outs:
     - path: metrics/dl_evaluation_report.json
       hash: md5
-      md5: c7a562d777c596a24dd6399c6c6a2815
-      size: 166
+      md5: ca8f5a83eb09d4b6146c9051ff86ec4a
+      size: 167
+  train_pytorch:
+    cmd: python src/train_pytorch.py
+    deps:
+    - path: data/processed/fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703
+    - path: params.yaml
+      hash: md5
+      md5: 12f53a82255ca3caf25c6da2af73104c
+      size: 1013
+    - path: src/mlflow_tracking.py
+      hash: md5
+      md5: a2e57166454f332f2bf7d00ac87b00f6
+      size: 1023
+    - path: src/train_pytorch.py
+      hash: md5
+      md5: 41ca1a14e1e9ab5f709b02c0c38ea5a9
+      size: 4240
+    outs:
+    - path: models/pytorch_model.pkl
+      hash: md5
+      md5: 2da9554be098554a322bb59a91748243
+      size: 50851
