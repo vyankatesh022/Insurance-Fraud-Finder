@@ -132,3 +132,23 @@ stages:
       hash: md5
       md5: 2da9554be098554a322bb59a91748243
       size: 50851
+  evaluate_pytorch:
+    cmd: python src/evaluate_pytorch.py
+    deps:
+    - path: data/processed/fraud_data_processed.csv
+      hash: md5
+      md5: 168bc66e10108690c75d3ba8ea4a9992
+      size: 575703
+    - path: models/pytorch_model.pkl
+      hash: md5
+      md5: 2da9554be098554a322bb59a91748243
+      size: 50851
+    - path: src/evaluate_pytorch.py
+      hash: md5
+      md5: 331e55e8d13f38098cf646f454822e7a
+      size: 4297
+    outs:
+    - path: metrics/pytorch_evaluation_report.json
+      hash: md5
+      md5: 97556e16dbf6619b3bef298a91c36cd9
+      size: 167

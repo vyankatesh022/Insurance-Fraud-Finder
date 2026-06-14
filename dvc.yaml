@@ -55,3 +55,12 @@ stages:
       - params.yaml
     outs:
       - models/pytorch_model.pkl
+
+  evaluate_pytorch:
+    cmd: python src/evaluate_pytorch.py
+    deps:
+      - data/processed/fraud_data_processed.csv
+      - src/evaluate_pytorch.py
+      - models/pytorch_model.pkl 
+    metrics:
+      - metrics/pytorch_evaluation_report.json
