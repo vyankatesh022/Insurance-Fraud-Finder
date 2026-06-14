@@ -1,19 +1,19 @@
 import pandas as pd
 import yaml
-import pickle
 import os
-import mlflow
-import mlflow.pytorch
-import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, TensorDataset
+import mlflow
+import mlflow.pytorch
+import pickle
 
 from logger_utils import get_logger
 from mlflow_tracking import setup_mlflow
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
+from imblearn.over_sampling import RandomOverSampler
 
 # Load parameters
 with open('params.yaml', 'r') as f:
@@ -21,15 +21,11 @@ with open('params.yaml', 'r') as f:
 
 # Configure logging
 logger = get_logger('train_pytorch', params)
-logger.setLevel(params['logging']['level'])
 
-# MLflow track
+# MLflow_track
 setup_mlflow()
 
-
-
 def train_pytorch():
-    logger.info("Starting PyTorch training pipeline")
     # Load Data
     df = pd.read_csv(params["data"]["processed_file"])
     x = df.drop(columns=["Fraud Category"])
@@ -38,30 +34,36 @@ def train_pytorch():
     scaler = StandardScaler()
     x_scaled = scaler.fit_transform(x)
 
-    num_classes = len(np.unique(y))
-    logger.info("Data loaded and scaled successfully")
-
     xtrain, xtest, ytrain, ytest = train_test_split(
-        x_scaled, y, 
+        x_scaled, y,
         test_size=params["pytorch_model"]["test_size"],
         random_state=params["pytorch_model"]["random_state"]
     )
     
+    logger.info("Applying RandomOverSampler to balance training data")
+    ros = RandomOverSampler(random_state=params['pytorch_model']['random_state'])
+    xtrain, ytrain = ros.fit_resample(xtrain, ytrain)
+
     # Convert to PyTorch tensors
     xtrain_t = torch.tensor(xtrain, dtype=torch.float32)
     ytrain_t = torch.tensor(ytrain, dtype=torch.long)
     xtest_t = torch.tensor(xtest, dtype=torch.float32)
     ytest_t = torch.tensor(ytest, dtype=torch.long)
-    
-    train_dataset = TensorDataset(xtrain_t, ytrain_t)
-    train_loader = DataLoader(train_dataset, batch_size=params["pytorch_model"]["batch_size"], shuffle=True)
 
-    with mlflow.start_run(run_name="PyTorch Model"):
-        mlflow.log_params(params["pytorch_model"])
-        
-        # Build model
-        input_dim = xtrain.shape[1]
+    train_dataset = TensorDataset(xtrain_t, ytrain_t)
+    train_loader = DataLoader(
+        train_dataset, 
+        batch_size=params["pytorch_model"]["batch_size"], 
+        shuffle=True
+    )
+
+    input_dim = xtrain.shape[1]
+    num_classes = len(pd.Series(y).unique())
+
+    with mlflow.start_run(run_name="PyTorch_Model"):
         logger.info(f"Building PyTorch sequential model with input_dim={input_dim}")
+        mlflow.log_params(params["pytorch_model"])
+
         model = nn.Sequential(
             nn.Linear(input_dim, params["pytorch_model"]["hidden_size1"]),
             nn.ReLU(),
@@ -112,8 +114,7 @@ def train_pytorch():
         model_path = "models/pytorch_model.pkl"
         with open(model_path, "wb") as f:
             pickle.dump(model, f)
-        mlflow.log_artifact(model_path)
-
+            
         logger.info(f"Training complete — val_accuracy: {acc_val:.4f}, val_loss: {loss_val:.4f}")
 
 if __name__ == "__main__":

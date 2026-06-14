@@ -7,7 +7,6 @@ import mlflow
 import mlflow.keras
 import numpy as np
 
-
 from logger_utils import get_logger
 from mlflow_tracking import setup_mlflow
 from sklearn.preprocessing import LabelEncoder, StandardScaler
@@ -15,9 +14,8 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
 from keras.optimizers import Adam
-from keras.utils import to_categorical
-
-
+from keras.callbacks import EarlyStopping
+from imblearn.over_sampling import RandomOverSampler
 
 # Load parameters
 with open('params.yaml', 'r') as f:
@@ -38,14 +36,19 @@ def train_dl():
     scaler = StandardScaler()
     x_scaled = scaler.fit_transform(x)
 
-    # Determine classification type automatically
-    num_classes = len(np.unique(y))
-    if num_classes > 2:
-        y = to_categorical(y)
-
     xtrain, xtest, ytrain, ytest = train_test_split(x_scaled, y,test_size=params["dl_model"]["test_size"],
                                                     random_state=params["dl_model"]["random_state"])
 
+    logger.info("Applying RandomOverSampler to balance training data")
+    ros = RandomOverSampler(random_state=params['dl_model']['random_state'])
+    xtrain, ytrain = ros.fit_resample(xtrain, ytrain)
+
+    # Determine classification type automatically
+    num_classes = len(np.unique(y))
+    if num_classes > 2:
+        from keras.utils import to_categorical
+        ytrain = to_categorical(ytrain, num_classes=num_classes)
+        ytest = to_categorical(ytest, num_classes=num_classes)
 
     with mlflow.start_run(run_name="DL Model"):
         mlflow.log_params(params["dl_model"])
@@ -62,12 +65,14 @@ def train_dl():
         model.compile(optimizer=params["dl_model"]["optimizer"], 
                       loss=params["dl_model"]["loss"], metrics=["accuracy"])
 
+        early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 
         history = model.fit(
             xtrain, ytrain,
             epochs=params["dl_model"]["epochs"],
             batch_size=params["dl_model"]["batch_size"],
             validation_split=params["dl_model"]["validation_split"],
+            callbacks=[early_stop],
             verbose=1)
 
         # Evaluate Model

@@ -27,7 +27,7 @@ rf_model:
 dl_model:
   test_size: 0.4
   random_state: 40
-  epochs: 50
+  epochs: 100
   batch_size: 32
   validation_split: 0.2
   optimizer: "adam"
@@ -37,7 +37,7 @@ dl_model:
 pytorch_model:
   test_size: 0.4
   random_state: 42
-  epochs: 50
+  epochs: 100
   batch_size: 32
   learning_rate: 0.001
   hidden_size1: 128

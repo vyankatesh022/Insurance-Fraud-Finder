@@ -10,6 +10,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
+from imblearn.over_sampling import RandomOverSampler
 
 # Load parameters
 with open('params.yaml', 'r') as f:
@@ -40,6 +41,9 @@ def train_rf():
         X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=params['rf_model']['test_size'],\
                                                              random_state=params['rf_model']['random_state'])
 
+        logger.info("Applying RandomOverSampler to balance training data")
+        ros = RandomOverSampler(random_state=params['rf_model']['random_state'])
+        X_train, y_train = ros.fit_resample(X_train, y_train)
 
         with mlflow.start_run(run_name="RandomForest_Model"):
 
