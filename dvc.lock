@@ -42,8 +42,8 @@ stages:
     outs:
     - path: models/rf_model.pkl
       hash: md5
-      md5: 3b4211af2417534a899f3d2fc2e2d90c
-      size: 1471706
+      md5: db4aa0c494c41e9f4ae850ac1f437cdf
+      size: 2173450
   evaluate_rf:
     cmd: python src/evaluate_rf.py
     deps:
@@ -53,8 +53,8 @@ stages:
       size: 575703
     - path: models/rf_model.pkl
       hash: md5
-      md5: 3b4211af2417534a899f3d2fc2e2d90c
-      size: 1471706
+      md5: db4aa0c494c41e9f4ae850ac1f437cdf
+      size: 2173450
     - path: src/evaluate_rf.py
       hash: md5
       md5: f8c088de657cc6fc03af406c4aa0481a
@@ -62,7 +62,7 @@ stages:
     outs:
     - path: metrics/rf_metrics.json
       hash: md5
-      md5: d8ee78a42d07bb78f31e041cb8ee3c6d
+      md5: 76a7b917c4aaaff9339536113e062f2e
       size: 474
   train_dl:
     cmd: python src/train_dl.py
@@ -81,13 +81,13 @@ stages:
       size: 1023
     - path: src/train_dl.py
       hash: md5
-      md5: 154ebef32cc6d8b1e8d1036fb65e34d9
-      size: 2773
+      md5: 8cd31095f1c43463f0cb4fc513874c95
+      size: 2768
     outs:
     - path: models/dl_model.pkl
       hash: md5
-      md5: 6c3a02f4efbd144b560da11ba7dff64a
-      size: 172119
+      md5: d7232128a9ff5c0fbf36705b6c6f24cc
+      size: 172252
   evaluate_dl:
     cmd: python src/evaluate_dl.py
     deps:
@@ -97,14 +97,14 @@ stages:
       size: 575703
     - path: models/dl_model.pkl
       hash: md5
-      md5: 6c3a02f4efbd144b560da11ba7dff64a
-      size: 172119
+      md5: d7232128a9ff5c0fbf36705b6c6f24cc
+      size: 172252
     - path: src/evaluate_dl.py
       hash: md5
-      md5: aa8e9126bb6f78c5a89cf7cd91d6d2b7
-      size: 4263
+      md5: bf2de8834d42281ca10ffd4e0b794e59
+      size: 4280
     outs:
     - path: metrics/dl_evaluation_report.json
       hash: md5
-      md5: 2e95b497fef6ad8cfde3111d7e0b13bd
+      md5: c7a562d777c596a24dd6399c6c6a2815
       size: 166

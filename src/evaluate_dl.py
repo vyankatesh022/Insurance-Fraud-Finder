@@ -1,6 +1,7 @@
 import pandas as pd
 import yaml
 import os
+os.environ["KERAS_BACKEND"] = "torch"
 import json
 import pickle
 import mlflow
@@ -9,8 +10,8 @@ import numpy as np
 from logger_utils import get_logger
 from mlflow_tracking import setup_mlflow
 
-from tensorflow.keras.models import load_model
-from tensorflow.keras.utils import to_categorical
+from keras.models import load_model
+from keras.utils import to_categorical
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler

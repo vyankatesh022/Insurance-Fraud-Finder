@@ -16,3 +16,6 @@ __pycache__/
 # Temporary or debug files
 temp.py
 *.tmp
+
+# Database
+*db
